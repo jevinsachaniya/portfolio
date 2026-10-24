@@ -59,11 +59,12 @@ const portfolioData = {
     id: "aliveradar",
     title: "AliveRadar — Website Uptime Monitoring Platform",
     tagline: "Website Uptime Monitoring Platform",
-    subtitle: "Personal Project",
+    subtitle: "Personal Web Project",
     category: "Website Uptime Monitoring Platform",
     image: "./aliveradar.png",
+    overview: "AliveRadar is a personal web development project focused on website uptime monitoring. The purpose of website uptime monitoring is to help website owners continuously verify whether their web applications and services are reachable and identify potential downtime or connectivity issues early.",
     description: "AliveRadar is a website monitoring platform designed to help website owners check website availability and identify potential downtime.",
-    problem: "Website owners need a convenient way to check whether their websites are reachable and identify availability issues.",
+    problem: "Website owners need a convenient way to check whether their websites are reachable and identify availability issues before downtime impacts users.",
     features: [
       "Website URL monitoring",
       "Website availability status",
@@ -72,7 +73,10 @@ const portfolioData = {
     ],
     role: "Designed and developed AliveRadar as a personal project, working on frontend development, backend functionality, and deployment.",
     contributions: [
-      "Designed and developed AliveRadar as a personal project, working on frontend development, backend functionality, and deployment."
+      "Designed and developed AliveRadar as a personal project, handling end-to-end development across frontend, backend, and deployment.",
+      "Built the frontend interface using React for clear status visibility and clean monitoring views.",
+      "Developed backend functionality in Python to perform URL availability checks and process endpoint responses.",
+      "Configured containerized application deployment with Docker and managed routing with Nginx."
     ],
     tags: ["React", "Python", "Docker", "Nginx"],
     liveUrl: "https://aliveradar.com"
@@ -171,12 +175,12 @@ const portfolioData = {
     type: "Current Employment",
     description: "Working on web application development, maintenance, bug fixing, and API-related functionality.",
     responsibilities: [
-      "Debug and resolve issues in existing web applications.",
-      "Maintain and improve frontend interfaces using Vue.js and Vuetify.",
-      "Work with REST APIs for frontend and backend communication.",
-      "Contribute to Python FastAPI endpoints for database-driven data retrieval and processing.",
-      "Process and filter database records to provide structured responses to frontend applications.",
-      "Collaborate with team members to understand requirements and improve existing functionality."
+      "Debugging and fixing issues in existing web applications.",
+      "Maintaining Vue.js and Vuetify interfaces.",
+      "Working with REST APIs and frontend-backend integration.",
+      "Contributing to Python FastAPI endpoints for database data retrieval and processing.",
+      "Handling database-driven functionality.",
+      "Improving existing application features."
     ],
     technologies: ["Vue.js", "Vuetify", "JavaScript", "Python", "FastAPI", "SQL", "REST APIs"]
   },

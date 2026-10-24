@@ -4,7 +4,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initExperienceCalculation();
   initFlagshipProject();
   initServices();
   initSkills();
@@ -16,36 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initScrollAnimations();
 });
-
-/* ==========================================================================
-   0. Dynamic Experience Calculation (March 2026 to Present)
-   ========================================================================== */
-function initExperienceCalculation() {
-  const startDate = new Date(2026, 2, 1); // March 1, 2026
-  const now = new Date();
-  
-  // Calculate months from March 2026 to Present
-  let totalMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth()) + 1;
-  if (totalMonths < 1) totalMonths = 1;
-
-  let label = `${totalMonths}+ Months`;
-  if (totalMonths >= 12) {
-    const years = Math.floor(totalMonths / 12);
-    const months = totalMonths % 12;
-    label = months > 0 ? `${years}y ${months}m` : `${years}+ Years`;
-  }
-
-  // Update hero stats value
-  const heroExpEl = document.getElementById('hero-experience-val');
-  if (heroExpEl) {
-    heroExpEl.textContent = label;
-  }
-
-  // Update experience card duration badges
-  document.querySelectorAll('.experience-duration-text').forEach(el => {
-    el.textContent = label;
-  });
-}
 
 /* ==========================================================================
    1. Scroll Reveal Animations (Intersection Observer)
@@ -80,14 +49,14 @@ function initFlagshipProject() {
   const p = portfolioData.project;
 
   container.innerHTML = `
-    <div class="card-clean p-4 sm:p-8 bg-white border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 reveal-on-scroll">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div class="card-clean p-6 sm:p-8 bg-white border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 reveal-on-scroll">
+      <div class="flex flex-col gap-6">
         
-        <!-- Left Column: Image Preview Mockup (lg:col-span-6) -->
-        <div class="lg:col-span-6 flex flex-col justify-between">
+        <!-- Top: Image Preview Mockup (Natural Aspect Ratio - Never Cropped) -->
+        <div class="w-full max-w-xl sm:max-w-2xl mx-auto flex flex-col justify-between">
           <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-50">
             <!-- Top Mockup Bar -->
-            <div class="px-4 py-2.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between">
+            <div class="px-4 py-2 bg-slate-100 border-b border-slate-200 flex items-center justify-between">
               <div class="flex items-center gap-1.5 shrink-0">
                 <span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span>
                 <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
@@ -103,19 +72,19 @@ function initFlagshipProject() {
               </span>
             </div>
 
-            <!-- Image Viewport -->
-            <div class="relative overflow-hidden cursor-pointer bg-slate-50 group" onclick="openProjectModal('${p.id}')">
+            <!-- Image Viewport (Full Image Visible, Never Cut) -->
+            <div class="relative cursor-pointer bg-slate-50 group" onclick="openProjectModal('${p.id}')">
               <img 
                 src="${p.image}" 
                 alt="${p.title}" 
-                class="w-full h-auto object-cover object-top hover:scale-[1.02] transition-transform duration-500" 
+                class="w-full h-auto object-contain block hover:scale-[1.01] transition-transform duration-500" 
                 loading="lazy" 
               />
             </div>
           </div>
 
           <!-- Bottom Meta Label -->
-          <div class="flex justify-between items-center pt-2.5 text-[11px] text-slate-400 font-semibold">
+          <div class="flex justify-between items-center pt-2 text-[11px] text-slate-400 font-semibold">
             <span class="flex items-center gap-1 text-purple-600">
               <i class="fa-solid fa-shield-halved text-xs"></i>
               <span>Production Web Application</span>
@@ -127,8 +96,8 @@ function initFlagshipProject() {
           </div>
         </div>
 
-        <!-- Right Column: Content & Actions (lg:col-span-6) -->
-        <div class="lg:col-span-6 space-y-4">
+        <!-- Bottom: Content & Compact Grids (Reduces Card Height by 50%) -->
+        <div class="w-full space-y-4">
           
           <!-- Top Meta Row -->
           <div class="flex items-center justify-between text-xs">
@@ -142,53 +111,80 @@ function initFlagshipProject() {
           <!-- Title Row with Arrow -->
           <div>
             <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2">
-              <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight">
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight">
                 ${p.title}
               </h3>
-              <i class="fa-solid fa-arrow-up-right-from-square text-base text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+              <i class="fa-solid fa-arrow-up-right-from-square text-sm text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
             </a>
           </div>
 
           <!-- Description (Project Overview) -->
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            ${p.description}
+            ${p.overview || p.description}
           </p>
 
-          <!-- Key Features -->
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-            ${p.features.map(f => `
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-                <span>${f}</span>
-              </li>
-            `).join('')}
-          </ul>
-
-          <!-- Tech Stack Badges -->
-          <div class="flex flex-wrap gap-1.5 pt-1">
-            ${p.tags.map(t => `
-              <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-100">
-                ${t}
-              </span>
-            `).join('')}
-          </div>
-
-          <!-- Action Buttons & Live Status -->
-          <div class="pt-3 space-y-2">
-            <div class="flex flex-wrap items-center gap-3">
-              <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
-                <span>Visit Live Platform</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </a>
-              <button onclick="openProjectModal('${p.id}')" class="px-5 py-3 rounded-full border border-purple-200 hover:border-purple-600 text-purple-700 hover:bg-purple-50 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
-                <i class="fa-solid fa-layer-group text-xs"></i>
-                <span>Project Details</span>
-              </button>
+          <!-- Problem Addressed & My Contribution (2 Columns Side-by-Side) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <div class="p-3.5 rounded-xl bg-purple-50/60 border border-purple-100 text-xs flex flex-col justify-between">
+              <div>
+                <span class="font-bold text-purple-800 uppercase tracking-wider text-[10px] block mb-1">
+                  <i class="fa-solid fa-circle-info mr-1"></i> Problem Addressed
+                </span>
+                <p class="text-slate-600 leading-relaxed">
+                  ${p.problem}
+                </p>
+              </div>
             </div>
 
-            <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 pt-1">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Live & Operational &bull; aliveradar.com</span>
+            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs flex flex-col justify-between">
+              <div>
+                <h5 class="font-bold uppercase tracking-wider text-slate-900 text-[10px] mb-1">
+                  <i class="fa-solid fa-code-commit text-purple-600 mr-1"></i> My Contribution
+                </h5>
+                <p class="text-slate-600 leading-relaxed">
+                  ${p.contributions[0]}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Features (4 Columns Grid) -->
+          <div>
+            <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Key Features:</h5>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-xs text-slate-700">
+              ${p.features.map(f => `
+                <li class="flex items-start gap-2 p-2.5 rounded-xl bg-slate-50/80 border border-slate-100">
+                  <i class="fa-solid fa-check text-purple-600 text-xs mt-0.5 shrink-0"></i>
+                  <span class="text-[11px] font-medium leading-snug">${f}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Footer Row: Tech Stack & Action Buttons -->
+          <div class="pt-3 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100">
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="text-xs font-bold text-slate-400 mr-1 uppercase">Stack:</span>
+              ${p.tags.map(t => `
+                <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-100">
+                  ${t}
+                </span>
+              `).join('')}
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 mr-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Live Platform</span>
+              </div>
+              <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-purple-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+                <span>Visit Live</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+              <button onclick="openProjectModal('${p.id}')" class="px-4 py-2.5 rounded-full border border-purple-200 hover:border-purple-600 text-purple-700 hover:bg-purple-50 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-xs"></i>
+                <span>Details</span>
+              </button>
             </div>
           </div>
 
@@ -328,7 +324,7 @@ function openProjectModal(id) {
   document.getElementById('modal-title').textContent = project.title;
   document.getElementById('modal-category').textContent = project.category;
   document.getElementById('modal-image').src = project.image;
-  document.getElementById('modal-desc').textContent = project.description;
+  document.getElementById('modal-desc').textContent = project.overview || project.description;
   document.getElementById('modal-problem').textContent = project.problem;
 
   const featuresList = document.getElementById('modal-features');
