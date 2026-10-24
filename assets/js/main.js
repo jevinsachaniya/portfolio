@@ -1,21 +1,51 @@
 /**
- * Main Controller for Studio Portfolio Layout
- * Exact Match to DevsLoad Horizontal Browser Mockup Layout
+ * Main Controller for Jevin Sachaniya's Developer Portfolio
+ * Clean, Modern, Recruiter-Friendly, and Accessible
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initExperienceCalculation();
   initFlagshipProject();
   initServices();
   initSkills();
   initCompetencies();
   initExperience();
   initProcess();
-  initContactForm();
   initCopyEmail();
   initMobileNav();
   initScrollSpy();
   initScrollAnimations();
 });
+
+/* ==========================================================================
+   0. Dynamic Experience Calculation (March 2026 to Present)
+   ========================================================================== */
+function initExperienceCalculation() {
+  const startDate = new Date(2026, 2, 1); // March 1, 2026
+  const now = new Date();
+  
+  // Calculate months from March 2026 to Present
+  let totalMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth()) + 1;
+  if (totalMonths < 1) totalMonths = 1;
+
+  let label = `${totalMonths}+ Months`;
+  if (totalMonths >= 12) {
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    label = months > 0 ? `${years}y ${months}m` : `${years}+ Years`;
+  }
+
+  // Update hero stats value
+  const heroExpEl = document.getElementById('hero-experience-val');
+  if (heroExpEl) {
+    heroExpEl.textContent = label;
+  }
+
+  // Update experience card duration badges
+  document.querySelectorAll('.experience-duration-text').forEach(el => {
+    el.textContent = label;
+  });
+}
 
 /* ==========================================================================
    1. Scroll Reveal Animations (Intersection Observer)
@@ -32,7 +62,7 @@ function initScrollAnimations() {
       }
     });
   }, {
-    threshold: 0.12,
+    threshold: 0.1,
     rootMargin: '0px 0px -40px 0px'
   });
 
@@ -40,8 +70,8 @@ function initScrollAnimations() {
 }
 
 /* ==========================================================================
-   2. AliveRadar — 2-Column Layout (Image Left, Content Right)
-   Clean Studio White Aesthetic Matching the Website Theme
+   2. AliveRadar — 2-Column Flagship Card (Image Left, Content Right)
+   Clean White Studio Aesthetic (DevsLoad Layout Match)
    ========================================================================== */
 function initFlagshipProject() {
   const container = document.getElementById('selected-work-grid');
@@ -50,7 +80,7 @@ function initFlagshipProject() {
   const p = portfolioData.project;
 
   container.innerHTML = `
-    <div class="card-clean p-6 sm:p-8 bg-white border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 reveal-on-scroll">
+    <div class="card-clean p-4 sm:p-8 bg-white border border-slate-100 shadow-md hover:shadow-xl transition-all duration-300 reveal-on-scroll">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <!-- Left Column: Image Preview Mockup (lg:col-span-6) -->
@@ -84,14 +114,14 @@ function initFlagshipProject() {
             </div>
           </div>
 
-          <!-- Bottom Label -->
+          <!-- Bottom Meta Label -->
           <div class="flex justify-between items-center pt-2.5 text-[11px] text-slate-400 font-semibold">
             <span class="flex items-center gap-1 text-purple-600">
               <i class="fa-solid fa-shield-halved text-xs"></i>
-              <span>Production Platform</span>
+              <span>Production Web Application</span>
             </span>
-            <button onclick="openProjectModal('${p.id}')" class="text-slate-500 hover:text-purple-600 flex items-center gap-1">
-              <span>View Full Screenshot</span>
+            <button onclick="openProjectModal('${p.id}')" class="text-slate-500 hover:text-purple-600 flex items-center gap-1 transition-colors">
+              <span>View Full Details</span>
               <i class="fa-solid fa-expand text-[10px]"></i>
             </button>
           </div>
@@ -106,7 +136,7 @@ function initFlagshipProject() {
               <i class="fa-solid fa-rocket text-xs"></i>
               FEATURED PLATFORM
             </span>
-            <span class="text-slate-400 font-semibold text-[11px]">Independent Project</span>
+            <span class="text-slate-400 font-semibold text-[11px]">Personal Web Project</span>
           </div>
 
           <!-- Title Row with Arrow -->
@@ -121,22 +151,22 @@ function initFlagshipProject() {
 
           <!-- Description -->
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Independently developed comprehensive website uptime monitoring platform offering real-time diagnostics for website availability, response times, SSL & DNS health, and public status pages.
+            ${p.description}
           </p>
 
-          <!-- Key Bullet Points with Green Checkmarks -->
+          <!-- Key Feature Highlights -->
           <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
             <li class="flex items-start gap-2.5">
               <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-              <span>Built automated checks for HTTP endpoints, response latency tracking, and downtime detection.</span>
+              <span>Automated website URL monitoring, availability status, and response latency tracking.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-              <span>Engineered with Python backend, Docker & Nginx containerized deployment, and real-time alert routing.</span>
+              <span>Engineered with Python backend check routines, React frontend, and Docker & Nginx containerization.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-              <span>Clean dashboard interface to review monitoring metrics, SSL/DNS health, and publish public status pages.</span>
+              <span>Monitoring history, incident diagnostics, and public status pages for real-time visibility.</span>
             </li>
           </ul>
 
@@ -158,7 +188,7 @@ function initFlagshipProject() {
               </a>
               <button onclick="openProjectModal('${p.id}')" class="px-5 py-3 rounded-full border border-purple-200 hover:border-purple-600 text-purple-700 hover:bg-purple-50 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
                 <i class="fa-solid fa-layer-group text-xs"></i>
-                <span>Quick Specs</span>
+                <span>Project Details</span>
               </button>
             </div>
 
@@ -200,25 +230,37 @@ function initServices() {
 }
 
 /* ==========================================================================
-   4. Skills (Bars + 5x2 Tech Logo Grid)
+   4. Technical Skills (4 Organized Categories - Honest, No Fake Percentages)
    ========================================================================== */
 function initSkills() {
-  const barsContainer = document.getElementById('skill-bars-container');
+  const categoriesContainer = document.getElementById('skills-categories-grid');
   const iconsContainer = document.getElementById('tech-icons-grid');
-  if (!barsContainer || !iconsContainer || typeof portfolioData === 'undefined') return;
+  if (!categoriesContainer || !iconsContainer || typeof portfolioData === 'undefined') return;
 
-  barsContainer.innerHTML = portfolioData.skillBars.map(b => `
-    <div class="space-y-1.5">
-      <div class="flex justify-between items-center text-xs font-bold text-slate-700">
-        <span>${b.name}</span>
-        <span class="text-purple-600 font-mono text-[11px]">${b.percent}%</span>
-      </div>
-      <div class="w-full h-1.5 rounded-full bg-slate-100 overflow-hidden">
-        <div class="h-full rounded-full bg-purple-600 transition-all duration-1000" style="width: ${b.percent}%;"></div>
+  // 4 Organized Skill Category Cards
+  categoriesContainer.innerHTML = portfolioData.skillCategories.map(cat => `
+    <div class="card-clean p-6 flex flex-col justify-between border border-slate-100 hover:border-purple-200 transition-all bg-white reveal-on-scroll">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 ${cat.color} flex items-center justify-center text-lg shrink-0">
+            <i class="${cat.icon}"></i>
+          </div>
+          <h4 class="text-base font-extrabold text-slate-900 leading-tight">
+            ${cat.category}
+          </h4>
+        </div>
+        <div class="flex flex-wrap gap-1.5 pt-1">
+          ${cat.skills.map(s => `
+            <span class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-200/60">
+              ${s}
+            </span>
+          `).join('')}
+        </div>
       </div>
     </div>
   `).join('');
 
+  // 10 Tech Logo Cards
   iconsContainer.innerHTML = portfolioData.techLogos.map(t => `
     <div class="p-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:border-purple-200 hover:shadow-md transition-all flex flex-col items-center justify-center text-center group aspect-square">
       <div class="w-9 h-9 rounded-xl flex items-center justify-center text-2xl mb-1 group-hover:scale-110 transition-transform" style="color: ${t.color}">
@@ -253,8 +295,8 @@ function initExperience() {
   const container = document.getElementById('experience-points-grid');
   if (!container || typeof portfolioData === 'undefined') return;
 
-  container.innerHTML = portfolioData.experience.points.map((pt) => `
-    <li class="flex items-start gap-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+  container.innerHTML = portfolioData.experience.responsibilities.map((pt) => `
+    <li class="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-relaxed p-3 rounded-xl bg-slate-50/70 border border-slate-100 hover:border-purple-200 transition-colors">
       <i class="fa-solid fa-circle-check text-purple-600 mt-1 text-xs shrink-0"></i>
       <span>${pt}</span>
     </li>
@@ -306,7 +348,7 @@ function openProjectModal(id) {
   const contribList = document.getElementById('modal-contributions');
   contribList.innerHTML = project.contributions.map(c => `
     <li class="flex items-start gap-2 text-xs text-slate-700">
-      <i class="fa-solid fa-terminal text-purple-600 mt-0.5 text-xs shrink-0"></i>
+      <i class="fa-solid fa-code-commit text-purple-600 mt-0.5 text-xs shrink-0"></i>
       <span>${c}</span>
     </li>
   `).join('');
@@ -350,31 +392,14 @@ function openProjectModal(id) {
 }
 
 /* ==========================================================================
-   9. Contact Form & Copy Email
+   9. Copy Email & Toast Notification
    ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('newsletter-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = form.querySelector('input');
-    if (input && input.value) {
-      if (typeof confetti === 'function') {
-        confetti({ particleCount: 65, spread: 60, origin: { y: 0.8 } });
-      }
-      showToast('Thank you! Your inquiry has been sent.', 'success');
-      input.value = '';
-    }
-  });
-}
-
 function initCopyEmail() {
   document.querySelectorAll('.copy-email-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const email = 'jevinsachaniya@gmail.com';
+      const email = portfolioData.personal.email || 'jevinsachaniya@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
-        showToast('Email address copied: ' + email, 'success');
+        showToast('Email copied to clipboard: ' + email);
       });
     });
   });
@@ -385,11 +410,12 @@ function showToast(message) {
   if (!container) {
     container = document.createElement('div');
     container.id = 'toast-container';
+    container.className = 'fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none';
     document.body.appendChild(container);
   }
 
   const toast = document.createElement('div');
-  toast.className = `flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-bold shadow-xl border bg-white border-purple-200 text-slate-800 transition-all duration-300 transform translate-y-3 opacity-0`;
+  toast.className = `flex items-center gap-2.5 px-4 py-3 rounded-xl text-xs font-bold shadow-xl border bg-white border-purple-200 text-slate-800 transition-all duration-300 transform translate-y-3 opacity-0 pointer-events-auto`;
   toast.innerHTML = `
     <i class="fa-solid fa-circle-check text-purple-600 text-sm"></i>
     <span>${message}</span>
