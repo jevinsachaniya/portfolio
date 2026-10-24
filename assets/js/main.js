@@ -162,7 +162,7 @@ function initFlagshipProject() {
           </div>
 
           <!-- Footer Row: Tech Stack & Action Buttons -->
-          <div class="pt-3 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100">
+          <div class="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 border-t border-slate-100">
             <div class="flex flex-wrap items-center gap-1.5">
               <span class="text-xs font-bold text-slate-400 mr-1 uppercase">Stack:</span>
               ${p.tags.map(t => `
@@ -172,19 +172,21 @@ function initFlagshipProject() {
               `).join('')}
             </div>
 
-            <div class="flex flex-wrap items-center gap-3">
-              <div class="flex items-center gap-2 text-xs font-bold text-emerald-600 mr-1">
+            <div class="flex flex-wrap items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
+              <div class="flex items-center gap-2 text-xs font-bold text-emerald-600">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span>Live Platform</span>
               </div>
-              <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-purple-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
-                <span>Visit Live</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-              </a>
-              <button onclick="openProjectModal('${p.id}')" class="px-4 py-2.5 rounded-full border border-purple-200 hover:border-purple-600 text-purple-700 hover:bg-purple-50 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
-                <i class="fa-solid fa-layer-group text-xs"></i>
-                <span>Details</span>
-              </button>
+              <div class="flex items-center gap-2">
+                <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="px-4 sm:px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-md shadow-purple-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-1.5">
+                  <span>Visit Live</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+                <button onclick="openProjectModal('${p.id}')" class="px-3.5 sm:px-4 py-2.5 rounded-full border border-purple-200 hover:border-purple-600 text-purple-700 hover:bg-purple-50 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5">
+                  <i class="fa-solid fa-layer-group text-xs"></i>
+                  <span>Details</span>
+                </button>
+              </div>
             </div>
           </div>
 
