@@ -28,7 +28,30 @@ const portfolioData = {
     education: {
       degree: "Bachelor of Vocation (B.Voc) in Information Technology",
       institution: "Silver Oak University, Ahmedabad, Gujarat, India",
-      description: "Currently pursuing my degree in Information Technology while gaining practical software development experience through professional work and personal projects."
+      period: "2025 – 2028",
+      description: "Currently pursuing my degree in Information Technology while gaining practical software development experience through professional work and personal projects.",
+      history: [
+        {
+          level: "College",
+          course: "Bachelor of Vocation (B.Voc) in Information Technology",
+          institution: "Silver Oak University, Ahmedabad",
+          period: "2025 – 2028",
+          status: "Undergraduate"
+        },
+        {
+          level: "STD 12th Detail",
+          stream: "Commerce",
+          institution: "Shree Lakshminarayan Dev Secondary and High-Secondary School - Lathidad",
+          period: "Feb-March - 2025",
+          percentage: "72%"
+        },
+        {
+          level: "STD 10th Detail",
+          institution: "Shree Swaminarayan Ghia Gurukul School - Tatam",
+          period: "March - 2023",
+          percentage: "73%"
+        }
+      ]
     }
   },
 
