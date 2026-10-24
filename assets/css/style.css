@@ -28,6 +28,10 @@ body {
   position: relative;
 }
 
+section[id] {
+  scroll-margin-top: 100px;
+}
+
 @media (max-width: 768px) {
   html, body {
     overflow-x: hidden;

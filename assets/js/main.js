@@ -143,31 +143,25 @@ function initFlagshipProject() {
           <div>
             <a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2">
               <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight">
-                AliveRadar — Website Uptime Platform
+                ${p.title}
               </h3>
               <i class="fa-solid fa-arrow-up-right-from-square text-base text-slate-400 group-hover:text-purple-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
             </a>
           </div>
 
-          <!-- Description -->
+          <!-- Description (Project Overview) -->
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
             ${p.description}
           </p>
 
-          <!-- Key Feature Highlights -->
+          <!-- Key Features -->
           <ul class="space-y-2 text-xs sm:text-sm text-slate-700">
-            <li class="flex items-start gap-2.5">
-              <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-              <span>Automated website URL monitoring, availability status, and response latency tracking.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-              <span>Engineered with Python backend check routines, React frontend, and Docker & Nginx containerization.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
-              <span>Monitoring history, incident diagnostics, and public status pages for real-time visibility.</span>
-            </li>
+            ${p.features.map(f => `
+              <li class="flex items-start gap-2.5">
+                <i class="fa-solid fa-check text-purple-600 text-xs mt-1 shrink-0"></i>
+                <span>${f}</span>
+              </li>
+            `).join('')}
           </ul>
 
           <!-- Tech Stack Badges -->
@@ -450,26 +444,71 @@ function initMobileNav() {
 }
 
 function initScrollSpy() {
-  const sections = document.querySelectorAll('section[id]');
+  const targetNavIds = ['hero', 'projects', 'about', 'experience', 'expertise', 'contact'];
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileLinks = document.querySelectorAll('#mobile-drawer nav a');
 
-  window.addEventListener('scroll', () => {
-    let current = 'hero';
-    const scrollPos = window.scrollY + 140;
+  function updateActiveLink() {
+    const scrollPosition = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
 
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        current = sec.getAttribute('id');
+    let activeId = 'hero';
+
+    // 1. If user scrolled to (or within 100px of) bottom of page, highlight Contact
+    if (windowHeight + scrollPosition >= docHeight - 100) {
+      activeId = 'contact';
+    } else {
+      // 2. Trigger point: 180px below viewport top (accounts for fixed header)
+      const triggerPoint = 180;
+
+      for (let i = 0; i < targetNavIds.length; i++) {
+        const id = targetNavIds[i];
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          // The last section whose top has crossed the trigger line is active
+          if (rect.top <= triggerPoint) {
+            activeId = id;
+          }
+        }
       }
-    });
+    }
 
+    // 3. Update desktop navigation links
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
+      if (link.getAttribute('href') === `#${activeId}`) {
         link.classList.add('active');
+      } else {
+        link.classList.remove('active');
       }
     });
-  });
+
+    // 4. Update mobile drawer links
+    mobileLinks.forEach(link => {
+      if (link.getAttribute('href') === `#${activeId}`) {
+        link.classList.add('text-purple-600', 'font-black');
+        link.classList.remove('text-slate-600');
+      } else {
+        link.classList.remove('text-purple-600', 'font-black');
+        link.classList.add('text-slate-600');
+      }
+    });
+  }
+
+  // Smooth scroll listener with requestAnimationFrame
+  let isTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        updateActiveLink();
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  // Update immediately on page load and window resize
+  updateActiveLink();
+  window.addEventListener('resize', updateActiveLink);
 }

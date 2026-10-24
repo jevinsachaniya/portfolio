@@ -54,32 +54,28 @@ const portfolioData = {
     }
   ],
 
-  // Single Flagship Project: AliveRadar (DevsLoad 2-Column Layout)
+  // Single Flagship Project: AliveRadar
   project: {
     id: "aliveradar",
     title: "AliveRadar — Website Uptime Monitoring Platform",
-    tagline: "Every Page, On Your Radar",
-    subtitle: "Personal Web Development Project for Uptime & Health Monitoring",
-    category: "Featured Web Application",
+    tagline: "Website Uptime Monitoring Platform",
+    subtitle: "Personal Project",
+    category: "Website Uptime Monitoring Platform",
     image: "./aliveradar.png",
-    description: "AliveRadar is a personal web development project focused on website uptime monitoring. It aims to help website owners understand whether their websites are reachable and monitor availability through a simple interface.",
-    problem: "Website owners need a convenient, reliable way to check whether their websites and services are responding and investigate availability problems through a simple interface.",
+    description: "AliveRadar is a website monitoring platform designed to help website owners check website availability and identify potential downtime.",
+    problem: "Website owners need a convenient way to check whether their websites are reachable and identify availability issues.",
     features: [
       "Website URL monitoring",
-      "Uptime and availability checks",
-      "Monitoring status and results",
-      "Response-time visibility",
-      "Monitoring history and diagnostic information"
+      "Website availability status",
+      "Response-time monitoring, where implemented",
+      "Monitoring history and diagnostic information, where implemented"
     ],
-    role: "Designed and developed the project as a personal software product, working across its frontend, backend, and deployment.",
+    role: "Designed and developed AliveRadar as a personal project, working on frontend development, backend functionality, and deployment.",
     contributions: [
-      "Designed and developed the project as a personal software product, working across its frontend, backend, and deployment.",
-      "Developed the user interface using React with clean monitoring dashboards.",
-      "Engineered backend check routines and response time tracking using Python.",
-      "Configured containerized application deployment with Docker and Nginx."
+      "Designed and developed AliveRadar as a personal project, working on frontend development, backend functionality, and deployment."
     ],
-    tags: ["React", "Python", "Docker", "Nginx", "FastAPI", "REST API"],
-    liveUrl: "https://aliveradar.com/"
+    tags: ["React", "Python", "Docker", "Nginx"],
+    liveUrl: "https://aliveradar.com"
   },
 
   // Services / What I Do
@@ -173,15 +169,14 @@ const portfolioData = {
     startDate: "2026-03-01",
     period: "March 2026 – Present",
     type: "Current Employment",
-    description: "I contribute to the development, maintenance, and improvement of web applications, working with frontend technologies, backend APIs, and database-driven functionality.",
+    description: "Working on web application development, maintenance, bug fixing, and API-related functionality.",
     responsibilities: [
       "Debug and resolve issues in existing web applications.",
-      "Maintain and improve user interfaces using Vue.js and Vuetify.",
-      "Work with REST APIs to support communication between frontend applications and backend services.",
-      "Handle application data and database-related functionality.",
-      "Contribute to Python FastAPI endpoints for data retrieval, processing, and frontend integration, where applicable to my actual work.",
-      "Investigate application issues and implement improvements to existing functionality.",
-      "Collaborate with team members to understand requirements and deliver reliable solutions."
+      "Maintain and improve frontend interfaces using Vue.js and Vuetify.",
+      "Work with REST APIs for frontend and backend communication.",
+      "Contribute to Python FastAPI endpoints for database-driven data retrieval and processing.",
+      "Process and filter database records to provide structured responses to frontend applications.",
+      "Collaborate with team members to understand requirements and improve existing functionality."
     ],
     technologies: ["Vue.js", "Vuetify", "JavaScript", "Python", "FastAPI", "SQL", "REST APIs"]
   },
