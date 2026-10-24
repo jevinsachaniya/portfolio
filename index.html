@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jevin Sachaniya | Software Developer | Backend & API Development</title>
+
+  <!-- Favicon / Tab Logo -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="apple-touch-icon.png" />
+  <link rel="shortcut icon" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Jevin Sachaniya - Software Developer. Creator of AliveRadar (Website Uptime Monitoring Platform), specialized in Vue.js, Vuetify, Python, FastAPI, and SQL." />
+  <meta name="author" content="Jevin Sachaniya" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            purple: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-[#ffffff] text-slate-800 antialiased relative selection:bg-purple-600 selection:text-white bg-studio-ambient min-h-screen">
+
+  <!-- ==========================================================================
+       Header / Navigation Bar
+       ========================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-white/90 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo Monogram -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <img src="favicon.svg" alt="JS Logo" class="w-10 h-10 rounded-xl group-hover:scale-105 transition-transform" />
+        <div>
+          <span class="font-extrabold text-sm sm:text-base tracking-wider text-slate-900 uppercase block leading-none">
+            Jevin Sachaniya
+          </span>
+          <span class="text-[10px] tracking-widest text-slate-400 uppercase font-bold block mt-1">
+            Software Developer
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links with Active Underline -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">AliveRadar</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#expertise" class="nav-link">Expertise</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right Action: Let's Talk Pill Button -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="px-5 py-2.5 rounded-full border border-purple-200 text-purple-600 hover:bg-purple-600 hover:text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button id="mobile-menu-toggle" class="md:hidden w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700" aria-label="Open Mobile Menu">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black/40 backdrop-blur-sm" id="mobile-drawer-close"></div>
+    <div class="fixed right-0 top-0 bottom-0 w-72 bg-white p-6 shadow-2xl flex flex-col justify-between border-l border-slate-100 z-10">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+          <span class="font-bold text-sm tracking-widest text-slate-900 uppercase">Navigation</span>
+          <button class="text-slate-400 hover:text-slate-700" onclick="document.getElementById('mobile-drawer').classList.add('hidden')">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-4 mt-6 text-xs font-bold uppercase tracking-wider text-slate-600">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">AliveRadar</a>
+          <a href="#experience">Experience</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-slate-100">
+        <a href="https://www.linkedin.com/in/jevinsachaniya-dev/" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-full bg-purple-600 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+          <i class="fa-brands fa-linkedin-in"></i>
+          <span>LinkedIn Profile</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="relative z-10 pt-28 sm:pt-36 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32">
+
+    <!-- ==========================================================================
+         Hero Section (No Person Image - High-End Developer Console Visual)
+         ========================================================================== -->
+    <section id="hero" class="pt-4 sm:pt-8 reveal-on-scroll">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Typography & Action Buttons -->
+        <div class="lg:col-span-6 space-y-6">
+          
+          <!-- Hello Pill -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-50 text-purple-700 border border-purple-100 text-xs font-bold uppercase tracking-wider">
+            <span>Hello, I'm</span>
+          </div>
+
+          <!-- Hero Name Heading -->
+          <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-none">
+            Jevin Sachaniya
+          </h1>
+
+          <!-- Role Subtitle with Purple Highlight -->
+          <h2 class="text-xl sm:text-2xl font-bold text-slate-700 leading-snug">
+            Software Developer & <br />
+            <span class="text-purple-600">Backend & API Developer</span>
+          </h2>
+
+          <!-- Exact Bio / Summary Paragraphs -->
+          <p class="text-sm sm:text-base text-slate-500 leading-relaxed max-w-lg">
+            I am a Software Developer with hands-on experience in web application development, software maintenance, debugging, and API integration. I work with modern web technologies to develop functional, reliable, and maintainable software solutions.
+          </p>
+
+          <p class="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-lg">
+            My technical experience includes <strong class="text-slate-800">Vue.js, Vuetify, JavaScript, Python, FastAPI</strong>, and database-driven application development. Creator of <strong class="text-purple-600">AliveRadar</strong> — an automated website uptime & latency monitoring platform.
+          </p>
+
+          <!-- Buttons Row -->
+          <div class="flex flex-wrap items-center gap-4 pt-1">
+            <!-- Solid Purple Pill Button -->
+            <a href="#projects" class="px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
+              <span>View AliveRadar</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+
+            <!-- Contact Me Button -->
+            <a href="#contact" class="px-7 py-3.5 rounded-full border border-slate-300 hover:border-purple-600 text-slate-700 hover:text-purple-600 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-xs"></i>
+              <span>Contact Me</span>
+            </a>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="pt-8 border-t border-slate-100 flex items-center gap-8 text-slate-700">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-xs">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div>
+                <span class="text-lg font-extrabold text-slate-900 block leading-none">2+</span>
+                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Years Experience</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-satellite-dish"></i>
+              </div>
+              <div>
+                <span class="text-lg font-extrabold text-slate-900 block leading-none">AliveRadar</span>
+                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Flagship Platform</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center text-xs">
+                <i class="fa-regular fa-building"></i>
+              </div>
+              <div>
+                <span class="text-lg font-extrabold text-slate-900 block leading-none">PHP Infosec</span>
+                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Industry Role</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Developer Console & System Telemetry (No Person Image) -->
+        <div class="lg:col-span-6 relative flex items-center justify-center min-h-[480px]">
+          
+          <!-- Concentric Orbit Halo Graphic -->
+          <div class="hero-halo"></div>
+
+          <!-- Central Architecture Console -->
+          <div class="relative z-10 w-full max-w-md bg-white border border-purple-100 rounded-3xl p-6 sm:p-7 shadow-xl shadow-purple-600/5 space-y-4">
+            
+            <!-- Terminal Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                <span class="ml-2 font-mono text-[11px] font-semibold text-slate-400">aliveradar@daemon</span>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-50 text-emerald-700 font-bold flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                ONLINE &bull; 200 OK
+              </span>
+            </div>
+
+            <!-- Code snippet representation -->
+            <div class="p-4 rounded-2xl bg-slate-900 text-slate-200 font-mono text-xs leading-relaxed space-y-1 overflow-x-auto shadow-inner">
+              <p class="text-slate-500">// AliveRadar Async Heartbeat Worker</p>
+              <p><span class="text-purple-400">async def</span> <span class="text-blue-300">check_endpoint</span>(url: <span class="text-amber-300">str</span>):</p>
+              <p class="pl-4"><span class="text-purple-400">async with</span> httpx.<span class="text-blue-300">AsyncClient</span>() <span class="text-purple-400">as</span> client:</p>
+              <p class="pl-8 text-slate-300">res = <span class="text-purple-400">await</span> client.<span class="text-blue-300">get</span>(url, timeout=5.0)</p>
+              <p class="pl-8 text-emerald-400">return {"status": "UP", "latency_ms": 248}</p>
+            </div>
+
+            <!-- Stack Badges -->
+            <div class="grid grid-cols-2 gap-2 pt-1 text-[11px] font-bold text-slate-700">
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-100 flex items-center gap-2">
+                <i class="fa-brands fa-react text-cyan-500 text-sm"></i>
+                <span>React Frontend</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-100 flex items-center gap-2">
+                <i class="fa-brands fa-python text-blue-500 text-sm"></i>
+                <span>Python Backend</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-100 flex items-center gap-2">
+                <i class="fa-brands fa-docker text-blue-600 text-sm"></i>
+                <span>Docker Container</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-purple-50/70 border border-purple-100 flex items-center gap-2">
+                <i class="fa-solid fa-server text-emerald-600 text-sm"></i>
+                <span>Nginx Routing</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Floating Glass HUD 1: Neural / Pulse Waveform (Top Right) -->
+          <div class="glass-hud p-4 absolute -top-4 -right-2 sm:-right-4 z-20 w-52 sm:w-56 space-y-2">
+            <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-400 pb-1 border-b border-purple-50">
+              <span class="flex items-center gap-1.5 text-purple-700">
+                <i class="fa-solid fa-heart-pulse text-xs"></i>
+                Uptime Pulse
+              </span>
+              <span>&bull;&bull;&bull;</span>
+            </div>
+            
+            <div class="py-1">
+              <svg class="w-full h-8" viewBox="0 0 160 30" fill="none">
+                <path class="wave-line" d="M0 15 Q20 5 40 15 T80 15 T120 5 T160 15" stroke="#7c3aed" stroke-width="2" fill="none" />
+                <path d="M0 15 Q20 25 40 15 T80 15 T120 25 T160 15" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
+              </svg>
+            </div>
+
+            <div class="flex justify-between items-center text-[10px] font-bold text-slate-500 pt-1">
+              <span class="uppercase tracking-wider">Latency SLA</span>
+              <span class="text-emerald-600 font-mono">99.98% [UP]</span>
+            </div>
+          </div>
+
+          <!-- Floating Glass HUD 2: System Architecture Ring (Bottom Left) -->
+          <div class="glass-hud p-4 absolute -bottom-6 -left-2 sm:-left-4 z-20 w-56 sm:w-60 space-y-2">
+            <div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-400 pb-1 border-b border-purple-50">
+              <span>AliveRadar Status</span>
+              <i class="fa-solid fa-rotate text-purple-600 text-xs"></i>
+            </div>
+
+            <div class="flex items-center gap-3 pt-1">
+              <div class="relative w-11 h-11 flex items-center justify-center shrink-0">
+                <svg class="w-11 h-11 -rotate-90" viewBox="0 0 36 36">
+                  <path class="text-purple-100" stroke-width="3.5" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                  <path class="text-purple-600" stroke-dasharray="99, 100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+                <span class="absolute text-[10px] font-extrabold text-slate-800">100%</span>
+              </div>
+
+              <div class="space-y-1 text-[10px] font-bold text-slate-600 flex-1">
+                <div class="flex justify-between items-center">
+                  <span>SSL & DNS</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span>Latency: 248ms</span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Single Flagship Project Spotlight: AliveRadar (DevsLoad Browser Mockup)
+         ========================================================================== -->
+    <section id="projects" class="reveal-on-scroll">
+      <div class="max-w-5xl mx-auto flex flex-wrap items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="section-tag">Flagship Platform</span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">AliveRadar — Selected Work</h3>
+        </div>
+        <a href="https://aliveradar.com/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold uppercase tracking-wider text-purple-600 hover:text-purple-700 flex items-center gap-1.5 transition-colors">
+          <span>Visit AliveRadar.com</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[11px]"></i>
+        </a>
+      </div>
+
+      <!-- AliveRadar DevsLoad-Style Horizontal Browser Mockup Card -->
+      <div id="selected-work-grid" class="max-w-5xl mx-auto">
+        <!-- Rendered via main.js -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Services ("What I Do" - 4 Cards Grid)
+         ========================================================================== -->
+    <section id="services" class="reveal-on-scroll">
+      <div class="mb-8">
+        <span class="section-tag">Services</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">What I Do</h3>
+      </div>
+
+      <!-- 4 Horizontal Cards Grid -->
+      <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Rendered via main.js -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Professional Summary & About Me Section
+         ========================================================================== -->
+    <section id="about" class="reveal-on-scroll">
+      <div class="card-clean p-8 sm:p-12">
+        <div class="max-w-4xl space-y-6">
+          <div>
+            <span class="section-tag">About & Professional Summary</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+              Software Developer & <span class="text-purple-600">Problem Solver</span>
+            </h3>
+          </div>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Software Developer experienced in maintaining web applications, troubleshooting software issues, implementing frontend improvements, and working with API-driven functionality. Familiar with frontend development, backend programming, database operations, and application deployment.
+          </p>
+
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Experienced in working with existing codebases, understanding application workflows, resolving bugs, and implementing functional enhancements. Interested in building efficient, maintainable, and user-focused software solutions using modern development technologies.
+          </p>
+
+          <div class="p-4 rounded-2xl bg-purple-50/70 border border-purple-100 text-xs sm:text-sm text-slate-700">
+            <span class="font-bold text-purple-700 uppercase tracking-wider block mb-1">Professional Objective:</span>
+            To contribute to software development teams by building reliable web applications, developing backend services, solving technical challenges, and improving existing systems. I aim to apply my development experience and technical skills to create maintainable, efficient, and scalable software solutions while contributing to meaningful business outcomes.
+          </div>
+
+          <!-- Academic & Location Badges -->
+          <div class="flex flex-wrap gap-4 pt-4 border-t border-slate-100 text-xs font-bold text-slate-700">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-graduation-cap text-purple-600"></i>
+              <span>Silver Oak University, Ahmedabad (B.Voc in Information Technology)</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-purple-600"></i>
+              <span>Ahmedabad, Gujarat, India</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Core Competencies Grid (9 Badges)
+         ========================================================================== -->
+    <section class="reveal-on-scroll">
+      <div class="mb-6">
+        <span class="section-tag">Competencies</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Core Competencies</h3>
+      </div>
+
+      <div id="competencies-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+        <!-- Rendered via main.js -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Professional Experience (PHP Infosec - No Person Image)
+         ========================================================================== -->
+    <section id="experience" class="reveal-on-scroll">
+      <div class="mb-8">
+        <span class="section-tag">Career History</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Professional Experience</h3>
+      </div>
+
+      <div class="card-clean p-8 sm:p-10 border-purple-100 bg-white space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 font-extrabold text-base flex items-center justify-center border border-purple-100 shrink-0">
+              PHP
+            </div>
+            <div>
+              <h4 class="text-lg font-extrabold text-slate-900">Junior Software Developer</h4>
+              <p class="text-xs font-bold text-purple-600">PHP Infosec &bull; Ahmedabad, Gujarat, India</p>
+            </div>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-100">
+            Current Role
+          </span>
+        </div>
+
+        <div>
+          <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">Key Responsibilities & Contributions:</h5>
+          <ul id="experience-points-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <!-- Rendered via main.js -->
+          </ul>
+        </div>
+
+        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-bold text-slate-500 mr-2 uppercase">Technologies:</span>
+          <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">Vue.js</span>
+          <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">Vuetify</span>
+          <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">JavaScript</span>
+          <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">REST APIs</span>
+          <span class="px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-700">SQL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Tools & Skills ("My Expertise" - 5x2 Tech Logo Grid & Bars)
+         ========================================================================== -->
+    <section id="expertise" class="reveal-on-scroll">
+      <div class="mb-8">
+        <span class="section-tag">Tools & Skills</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">My Expertise</h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Left: Skill Progress Bars -->
+        <div class="lg:col-span-5 card-clean p-6 sm:p-8 space-y-4">
+          <div id="skill-bars-container" class="space-y-4">
+            <!-- Rendered via main.js -->
+          </div>
+        </div>
+
+        <!-- Right: 10 Tech Logo Cards (5 columns x 2 rows) -->
+        <div class="lg:col-span-7">
+          <div id="tech-icons-grid" class="grid grid-cols-2 sm:grid-cols-5 gap-3.5">
+            <!-- Rendered via main.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         My Process ("A Simple, Effective Process")
+         ========================================================================== -->
+    <section id="process" class="reveal-on-scroll">
+      <div class="mb-10 text-center">
+        <span class="section-tag">My Process</span>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">A Simple, Effective Process</h3>
+      </div>
+
+      <div class="relative max-w-5xl mx-auto py-4">
+        <!-- Connecting Line -->
+        <div class="hidden md:block process-track"></div>
+
+        <!-- 5 Steps Connected -->
+        <div id="process-steps-container" class="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <!-- Rendered via main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Call To Action Banner ("Have a Project in Mind?")
+         ========================================================================== -->
+    <section id="contact" class="pb-10 reveal-on-scroll">
+      <div class="card-clean p-8 sm:p-12 bg-gradient-to-br from-purple-50/70 via-white to-purple-50/40 border-purple-100 overflow-hidden relative">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <!-- Left: Call to Action -->
+          <div class="lg:col-span-5 space-y-4">
+            <span class="section-tag">Let's Work Together</span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              Have a Project or Role in Mind?
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Available for professional networking, technical collaboration, and relevant software development opportunities. Let's build something practical together.
+            </p>
+            <div class="pt-2">
+              <a href="mailto:jevinsachaniya@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-600/20 transition-all">
+                <span>Let's Talk</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Middle: Contact Details -->
+          <div class="lg:col-span-4 space-y-4 text-xs font-bold text-slate-700 border-t lg:border-t-0 lg:border-l border-purple-100 pt-6 lg:pt-0 lg:pl-8">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">Email</span>
+                <button class="copy-email-btn text-purple-600 hover:underline text-left">
+                  jevinsachaniya@gmail.com
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">Mobile Number</span>
+                <a href="tel:+919016097957" class="text-slate-800 hover:text-purple-600">
+                  +91 9016097957
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/jevinsachaniya-dev/" target="_blank" rel="noopener noreferrer" class="text-slate-800 hover:text-purple-600">
+                  linkedin.com/in/jevinsachaniya-dev
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">Location</span>
+                <span class="text-slate-800">Ahmedabad, Gujarat, India</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Stylized 3D Paper Plane Graphic -->
+          <div class="lg:col-span-3 flex items-center justify-center">
+            <div class="w-40 h-40 rounded-full bg-gradient-to-tr from-purple-200/50 to-indigo-100 flex items-center justify-center text-5xl text-purple-500 shadow-inner">
+              <i class="fa-solid fa-paper-plane -rotate-12 translate-x-1 -translate-y-1"></i>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       Project Case Study Modal
+       ========================================================================== -->
+  <div id="project-modal" class="modal-overlay hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+    <div class="modal-backdrop fixed inset-0 bg-black/40 backdrop-blur-sm"></div>
+    
+    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto card-clean bg-white p-6 sm:p-8 shadow-2xl z-10">
+      
+      <!-- Close Button -->
+      <button id="modal-close" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-all" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+
+      <!-- Image -->
+      <div class="rounded-2xl overflow-hidden bg-slate-100 mb-5 border border-slate-100">
+        <img id="modal-image" src="" alt="AliveRadar" class="w-full h-auto object-cover" />
+      </div>
+
+      <!-- Title & Category -->
+      <div class="mb-4">
+        <span id="modal-category" class="text-xs font-bold uppercase tracking-wider text-purple-600 block mb-1"></span>
+        <h3 id="modal-title" class="text-2xl font-extrabold text-slate-900"></h3>
+      </div>
+
+      <!-- Problem Statement -->
+      <div class="mb-4 p-3.5 rounded-xl bg-purple-50/60 border border-purple-100 text-xs text-slate-700">
+        <span class="font-bold text-purple-800 uppercase block mb-1">Problem Addressed:</span>
+        <p id="modal-problem"></p>
+      </div>
+
+      <p id="modal-desc" class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4"></p>
+
+      <!-- Key Features -->
+      <div class="mb-4">
+        <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Key Features:</h5>
+        <ul id="modal-features" class="space-y-1.5"></ul>
+      </div>
+
+      <!-- Contributions -->
+      <div class="mb-5">
+        <h5 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">My Contribution:</h5>
+        <ul id="modal-contributions" class="space-y-1.5"></ul>
+      </div>
+
+      <!-- Tags -->
+      <div class="mb-6">
+        <div id="modal-tags" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- Live Demo Button -->
+      <div class="pt-4 border-t border-slate-100 flex justify-end">
+        <a id="modal-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-sm transition-all">
+          <span>Open Live Website (aliveradar.com)</span>
+          <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Footer Section
+       ========================================================================== -->
+  <footer class="border-t border-slate-200 py-8 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+      <p>&copy; 2026 Jevin Sachaniya. All rights reserved.</p>
+      <p>Designed with <span class="text-purple-600">💜</span> for great experiences.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
