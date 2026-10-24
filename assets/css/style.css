@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Aesthetic Match: Modern Studio Purple Theme (No Person Image)
-   With Exact DevsLoad-Style Horizontal Browser Mockup Project Card
+   Aesthetic Match: Modern Studio Purple Theme
+   Clean, Lightweight, Recruiter-Friendly, and Accessible
    ========================================================================== */
 
 :root {
@@ -26,6 +26,7 @@ html {
 
 body {
   position: relative;
+  overflow-x: hidden;
 }
 
 section[id] {
@@ -37,6 +38,15 @@ section[id] {
     overflow-x: hidden;
     width: 100%;
   }
+}
+
+/* Accessible focus visible outlines */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
 
 /* Background Ambient Gradient */
@@ -93,34 +103,7 @@ section[id] {
   box-shadow: 0 20px 35px -10px rgba(124, 58, 237, 0.09), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
 }
 
-/* ==========================================================================
-   Studio Light Project Showcase Mockup (Aarav Rathod Theme)
-   ========================================================================== */
-.browser-chrome-light {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
-}
-
-.browser-bar-light {
-  background: #f8fafc;
-  padding: 0.6rem 0.85rem;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-.browser-url-pill-light {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
-  padding: 0.2rem 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-/* Hero Centerpiece Orbit Halo (Tech Visual Instead of Person Photo) */
+/* Hero Centerpiece Orbit Halo */
 .hero-halo {
   position: absolute;
   top: 50%;
@@ -277,4 +260,33 @@ section[id] {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion Preferences
+   Respect users who prefer reduced motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-halo {
+    animation: none !important;
+  }
+  .wave-line {
+    animation: none !important;
+  }
+  .card-clean:hover {
+    transform: none !important;
+  }
 }

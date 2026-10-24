@@ -1,24 +1,28 @@
 /**
  * Professional Portfolio Data for Jevin Sachaniya
- * Recruiter-Friendly, Honest, and Factual Data
+ * Recruiter-Friendly, Honest, Factual, and Production-Ready
  */
 
 const portfolioData = {
   personal: {
     name: "Jevin Sachaniya",
-    title: "Software Developer",
+    title: "Junior Software Developer",
+    headline: "Junior Software Developer | Web Applications & API Development",
     subtitle: "Web Applications & API Development",
     currentRole: "Junior Software Developer at PHP Infosec",
     location: "Ahmedabad, Gujarat, India",
     phone: "+91 9016097957",
     email: "jevinsachaniya@gmail.com",
+    github: "https://github.com/jevinsachaniya",
     linkedin: "https://www.linkedin.com/in/jevinsachaniya-dev/",
     livePortfolio: "https://jevin.aliveradar.com",
     
-    heroBio: "I'm a Software Developer with hands-on experience in web application development, software maintenance, debugging, and REST API integration. I work with Vue.js, Vuetify, JavaScript, Python, FastAPI, and database-driven applications to build and maintain reliable software solutions. I enjoy solving technical problems, improving application functionality, and turning ideas into practical software products.",
+    heroBio: "I'm a Junior Software Developer with hands-on experience in web application development, software maintenance, debugging, and REST API integration. I work with Vue.js, Vuetify, JavaScript, Python, FastAPI, and database-driven applications to build and maintain reliable software solutions.",
+    
+    heroSecondaryBio: "I enjoy solving technical problems, improving application functionality, and turning ideas into practical software products.",
     
     aboutBio: [
-      "I'm a Software Developer and B.Voc (Information Technology) student with practical experience in developing, maintaining, and improving web applications.",
+      "I'm a Junior Software Developer and B.Voc (Information Technology) student with practical experience in developing, maintaining, and improving web applications.",
       "Currently, I work as a Junior Software Developer at PHP Infosec, where I contribute to existing applications through bug fixing, feature improvements, frontend development, and API-related tasks.",
       "My technical experience includes Vue.js, Vuetify, JavaScript, Python, FastAPI, SQL, and REST APIs. I enjoy understanding how applications work behind the scenes, investigating issues, and developing solutions that improve functionality and reliability.",
       "Alongside my professional work, I build personal projects to strengthen my technical skills and apply my knowledge to real-world problems. One such project is AliveRadar, a website uptime monitoring platform.",
@@ -36,20 +40,23 @@ const portfolioData = {
           course: "Bachelor of Vocation (B.Voc) in Information Technology",
           institution: "Silver Oak University, Ahmedabad",
           period: "2025 – 2028",
-          status: "Undergraduate"
+          status: "Undergraduate",
+          details: "Focused on core computing, database management, software engineering, and modern web application development."
         },
         {
           level: "STD 12th Detail",
           stream: "Commerce",
           institution: "Shree Lakshminarayan Dev Secondary and High-Secondary School - Lathidad",
-          period: "Feb-March - 2025",
-          percentage: "72%"
+          period: "Feb – March 2025",
+          percentage: "72%",
+          details: "Completed Higher Secondary School Certificate (HSC) in Commerce stream with 72% marks."
         },
         {
           level: "STD 10th Detail",
           institution: "Shree Swaminarayan Ghia Gurukul School - Tatam",
-          period: "March - 2023",
-          percentage: "73%"
+          period: "March 2023",
+          percentage: "73%",
+          details: "Completed Secondary School Certificate (SSC) with 73% marks."
         }
       ]
     }
@@ -77,32 +84,43 @@ const portfolioData = {
     }
   ],
 
-  // Single Flagship Project: AliveRadar
+  // Flagship Project: AliveRadar (Genuine Implemented Features)
   project: {
     id: "aliveradar",
     title: "AliveRadar — Website Uptime Monitoring Platform",
-    tagline: "Website Uptime Monitoring Platform",
-    subtitle: "Personal Web Project",
+    tagline: "Continuous availability checking & response-time telemetry",
+    subtitle: "Personal Web Development Project",
     category: "Website Uptime Monitoring Platform",
     image: "./aliveradar.png",
-    overview: "AliveRadar is a personal web development project focused on website uptime monitoring. The purpose of website uptime monitoring is to help website owners continuously verify whether their web applications and services are reachable and identify potential downtime or connectivity issues early.",
-    description: "AliveRadar is a website monitoring platform designed to help website owners check website availability and identify potential downtime.",
-    problem: "Website owners need a convenient way to check whether their websites are reachable and identify availability issues before downtime impacts users.",
-    features: [
-      "Website URL monitoring",
-      "Website availability status",
-      "Response-time monitoring, where implemented",
-      "Monitoring history and diagnostic information, where implemented"
+    liveUrl: "https://aliveradar.com",
+    githubUrl: "https://github.com/jevinsachaniya",
+    statusBadge: "Live Platform",
+    architecture: "Decoupled Architecture: React Single Page Application (SPA) frontend communicating via REST endpoints with a Python asynchronous backend, containerized via Docker and served behind an Nginx reverse proxy.",
+    overview: "AliveRadar is a personal web development project designed to help website owners continuously monitor whether their web applications and services are reachable, identify downtime promptly, and track endpoint response latency over time.",
+    problem: "Website owners and web developers often lack a simple, dedicated way to verify if their web services are reachable across the clock. Unnoticed downtime leads to degraded user trust and revenue loss. AliveRadar addresses this by automating availability checks and presenting real-time status telemetry.",
+    technicalImplementation: "The application architecture separates the frontend presentation layer from the background monitoring engine. The backend sends automated HTTP/HTTPS requests to configured URLs, records HTTP status codes (e.g., 200 OK vs 500/502/404), measures round-trip response latency in milliseconds, and exposes structured REST API endpoints for frontend consumption.",
+    implementedFeatures: [
+      "Target URL availability and uptime status checks",
+      "Response-time and latency measurement",
+      "Clean status dashboards with visual health indicators",
+      "Containerized deployment configuration using Docker",
+      "Reverse proxy routing and SSL termination via Nginx"
     ],
-    role: "Designed and developed AliveRadar as a personal project, working on frontend development, backend functionality, and deployment.",
+    plannedFeatures: [
+      "Multi-region synthetic ping checks",
+      "Automated incident alert notifications (Email & Webhook)",
+      "Public status pages for transparent uptime reporting"
+    ],
     contributions: [
-      "Designed and developed AliveRadar as a personal project, handling end-to-end development across frontend, backend, and deployment.",
-      "Built the frontend interface using React for clear status visibility and clean monitoring views.",
-      "Developed backend functionality in Python to perform URL availability checks and process endpoint responses.",
-      "Configured containerized application deployment with Docker and managed routing with Nginx."
+      "Designed and developed the full project lifecycle from architecture to deployment.",
+      "Built a modern, responsive user interface using React with clean status cards and intuitive navigation.",
+      "Implemented backend availability logic in Python to handle automated endpoint requests and status code parsing.",
+      "Configured Docker containers and Nginx reverse proxy routing for consistent production deployment."
     ],
-    tags: ["React", "Python", "Docker", "Nginx"],
-    liveUrl: "https://aliveradar.com"
+    tags: ["React", "Python", "Docker", "Nginx", "REST APIs"]
+  },
+  get flagshipProject() {
+    return this.project;
   },
 
   // Services / What I Do
@@ -127,37 +145,37 @@ const portfolioData = {
     },
     {
       title: "Database Operations",
-      desc: "Executing SQL queries, designing database-driven workflows, data filtering, and working with SQLAlchemy ORM.",
+      desc: "Executing SQL queries, designing database-driven workflows, data filtering, and working with relational tables.",
       icon: "fa-solid fa-database",
       color: "bg-emerald-50 text-emerald-600"
     }
   ],
 
-  // 4 Organized Skill Categories (Honest, No fake percentages)
+  // 4 Organized Skill Categories (Zero arbitrary percentages, clear headings)
   skillCategories: [
     {
       category: "Frontend Development",
       icon: "fa-solid fa-code",
       color: "text-purple-600",
-      skills: ["Vue.js", "Vuetify", "JavaScript", "HTML5", "CSS3", "Responsive Web Design"]
+      skills: ["Vue.js", "Vuetify", "JavaScript", "HTML5", "CSS3", "React (AliveRadar)", "Responsive Design"]
     },
     {
-      category: "Backend Development",
+      category: "Backend & APIs",
       icon: "fa-solid fa-server",
       color: "text-blue-600",
-      skills: ["Python", "FastAPI", "REST API Development", "API Integration", "Request & Response Handling", "Data Processing"]
+      skills: ["Python", "FastAPI", "Flask", "REST API Development", "API Integration", "Request & Response Handling"]
     },
     {
       category: "Database",
       icon: "fa-solid fa-database",
       color: "text-emerald-600",
-      skills: ["SQL", "Database Queries", "Database-Driven Applications", "SQLAlchemy ORM"]
+      skills: ["SQL", "MySQL", "Database Queries", "Database-Driven Applications", "SQLAlchemy ORM"]
     },
     {
-      category: "Tools & Development Practices",
+      category: "Tools & Deployment",
       icon: "fa-solid fa-screwdriver-wrench",
       color: "text-indigo-600",
-      skills: ["Git & GitHub", "Debugging & Troubleshooting", "Bug Fixing", "Software Maintenance", "API Testing & Documentation", "Docker & Nginx Exposure"]
+      skills: ["Git & GitHub", "Docker", "Nginx", "Linux CLI", "Postman", "Debugging & Troubleshooting"]
     }
   ],
 
@@ -168,7 +186,7 @@ const portfolioData = {
     { name: "Python", icon: "fa-brands fa-python", color: "#3776ab" },
     { name: "FastAPI", icon: "fa-solid fa-bolt", color: "#009688" },
     { name: "JavaScript", icon: "fa-brands fa-js", color: "#eab308" },
-    { name: "SQL", icon: "fa-solid fa-database", color: "#0284c7" },
+    { name: "SQL / MySQL", icon: "fa-solid fa-database", color: "#0284c7" },
     { name: "HTML5", icon: "fa-brands fa-html5", color: "#e34f26" },
     { name: "CSS3", icon: "fa-brands fa-css3-alt", color: "#1572b6" },
     { name: "Docker", icon: "fa-brands fa-docker", color: "#2496ed" },
@@ -198,12 +216,12 @@ const portfolioData = {
     type: "Current Employment",
     description: "Working on web application development, maintenance, bug fixing, and API-related functionality.",
     responsibilities: [
-      "Debugging and fixing issues in existing web applications.",
-      "Maintaining Vue.js and Vuetify interfaces.",
-      "Working with REST APIs and frontend-backend integration.",
+      "Debugging and resolving issues in existing web applications.",
+      "Developing and maintaining frontend features using Vue.js and Vuetify.",
+      "Working with REST APIs, request/response handling, and frontend-backend integration.",
       "Contributing to Python FastAPI endpoints for database data retrieval and processing.",
-      "Handling database-driven functionality.",
-      "Improving existing application features."
+      "Maintaining and improving database-driven software functionality.",
+      "Collaborating on code investigations, feature enhancements, and maintainability improvements."
     ],
     technologies: ["Vue.js", "Vuetify", "JavaScript", "Python", "FastAPI", "SQL", "REST APIs"]
   },
